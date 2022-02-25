@@ -9,13 +9,13 @@
 
 ## Screenshots
 
-![Vue.js App 1](https://raw.githubusercontent.com/joeaoregan/vue-front-end-dev-app/master/screenshots/screenshot1.jpg "Vue.js App 1")
+![Vue.js App 1](https://raw.githubusercontent.com/joeaoregan/vue-front-end-dev-app/master/screenshots/screenshot1.png "Vue.js App 1")
 ###### Vue.js App
 
-![Vue.js App 2](https://raw.githubusercontent.com/joeaoregan/vue-front-end-dev-app/master/screenshots/screenshot2.jpg "Vue.js App 2 - Popup")
+![Vue.js App 2](https://raw.githubusercontent.com/joeaoregan/vue-front-end-dev-app/master/screenshots/screenshot2.png "Vue.js App 2 - Popup")
 ###### Vue.js App
 
-![Vue.js App 3](https://raw.githubusercontent.com/joeaoregan/vue-front-end-dev-app/master/screenshots/screenshot3.jpg "Vue.js App 3")
+![Vue.js App 3](https://raw.githubusercontent.com/joeaoregan/vue-front-end-dev-app/master/screenshots/screenshot3.png "Vue.js App 3")
 ###### Vue.js App
 
 ## Project setup
