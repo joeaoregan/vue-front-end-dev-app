@@ -4,7 +4,7 @@
     
     <img :alt="imgAlt" src="./assets/logo.png" width="100" />
     <form v-show="people != null" id="search">
-      Filter: <input name="query" v-model="searchQuery" />
+      Search <s>Your Feelings</s> Users: <input name="query" v-model="searchQuery" />
     </form>
 
     <UserTable
