@@ -1,5 +1,7 @@
 # joe-oregan-front-end-dev-app
 
+Try it: [Heroku Web App](https://jor-vue-front-end.herokuapp.com/)
+
 * [Vue.js](https://vuejs.org/) project using [SWAPI api](https://swapi.dev)
 * Uses Axios to get [People](https://swapi.dev/api/people/?page=1&format=json) and [Planet](https://swapi.dev/api/planets/1/?page=1&format=json) JSON data
 * Several pages of JSON data are combined to create the data table
