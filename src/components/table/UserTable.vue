@@ -98,6 +98,7 @@ export default {
               @click="sortBy(key)"
               :class="{ active: sortKey == key }"
               :key="key"
+              :title="'Sort By ' + capitalFirstLetter(key) + (sortOrders[key] > 0 ? ' Descending' : ' Ascending')"
             >
               {{ capitalFirstLetter(key) }}
               <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
