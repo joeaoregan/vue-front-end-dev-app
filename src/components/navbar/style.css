@@ -4,6 +4,7 @@
     height: 40px;
     color: white;
     background-color: black;
+    z-index: 1;
 }
 
 .icon {    

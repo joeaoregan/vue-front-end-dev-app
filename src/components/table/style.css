@@ -68,4 +68,5 @@ table {
     width: 95%;
     padding: 2px;
     font-weight: bold;
+    cursor: pointer;
   }
