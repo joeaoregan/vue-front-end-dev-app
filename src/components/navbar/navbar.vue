@@ -1,27 +1,38 @@
 <template>
   <div class="navbar">
-     <a href="https://www.linkedin.com/in/joeaoregan/" target="_blank" title="Joe O'Regan - LinkedIn" class="link"><img alt="LinkedIn" src="../../assets/linkedin_logo.png" width="30" /></a>
-     <a href="https://github.com/joeaoregan/" target="_blank" title="Joe O'Regan - GitHub"><img alt="GitHub" src="../../assets/github_logo.png" width="30" /></a>
-      
+    <div class="icon">
+      <a
+        href="https://www.linkedin.com/in/joeaoregan/"
+        :target="newTab"
+        :title="titleLinkedIn"
+        class="link"
+        ><img alt="LinkedIn" src="../../assets/linkedin_logo.png" width="30"
+      /></a>
+    </div>
+    <div class="icon">
+      <a
+        href="https://github.com/joeaoregan/"
+        :target="newTab"
+        :title="titleGitHub"
+        ><img alt="GitHub" src="../../assets/github_logo.png" width="30"
+      /></a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "NavBar",
-  };
+  data() {
+    return {
+      titleLinkedIn: "Joe O'Regan - LinkedIn",
+      titleGitHub: "Joe O'Regan - GitHub",
+      newTab: "_blank",
+    };
+  },
+};
 </script>
 
 <style>
-.navbar {
-    position: fixed;
-    top: 0;
-    height: 30px;
-    color: white;
-    background-color: black;
-    padding: 10px;
-}
-.link {
-    padding-right: 10px;
-}
+@import "./style.css";
 </style>
