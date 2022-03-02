@@ -1,10 +1,11 @@
 <template>
   <div>
     <NavBar></NavBar>
-    
+
     <img :alt="imgAlt" src="./assets/logo.png" width="100" />
     <form v-show="people != null" id="search">
-      Search <s>Your Feelings</s> Users: <input name="query" v-model="searchQuery" />
+      Search <s>Your Feelings</s> Users:
+      <input name="query" v-model="searchQuery" />
     </form>
 
     <UserTable
@@ -81,37 +82,55 @@ export default {
   mounted() {
     document.title = "Joe O'Regan App";
 
-    let page = 1;
-    let next = "";
+    let personPage = 1,
+      planetPage = 1,
+      nextPlanetPage = "",
+      nextPersonPage = "";
 
     (async () => {
-      while (next != null) {
+      while (nextPersonPage != null) {
         await axios
-          .get("https://swapi.dev/api/people/?page=" + page++ + "&format=json")
+          .get(
+            "https://swapi.dev/api/people/?page=" + personPage + "&format=json"
+          )
           .then((response) => {
             this.people = this.people.concat(response.data.results);
-            next = response.data.next;
+            nextPersonPage = response.data.next;
           })
           .catch((errors) => {
             console.error(errors);
+          })
+          .finally(() => {
+            console.log("People Page " + personPage + " Loaded");
+            personPage++;
           });
       }
+      console.log("All Users Loaded");
+      if (nextPlanetPage == null && nextPersonPage == null) this.ready = true;
+      if (this.ready) console.log("Ready");
+    })();
 
-      page = 1;
-      next = "";
-
-      while (next != null) {
+    (async () => {
+      while (nextPlanetPage != null) {
         await axios
-          .get("https://swapi.dev/api/planets/?page=" + page++ + "&format=json")
+          .get(
+            "https://swapi.dev/api/planets/?page=" + planetPage + "&format=json"
+          )
           .then((response) => {
             this.planets = this.planets.concat(response.data.results);
-            next = response.data.next;
+            nextPlanetPage = response.data.next;
           })
           .catch((errors) => {
-            console.error('I have a bad feeling about this: ' + errors);
+            console.error("I have a bad feeling about this: " + errors);
+          })
+          .finally(() => {
+            console.log("Planets Page " + planetPage + " Loaded");
+            planetPage++;
           });
       }
-      this.ready = true;
+      console.log("All Home Planets Loaded");
+      if (nextPlanetPage == null && nextPersonPage == null) this.ready = true;
+      if (this.ready) console.log("Ready");
     })();
   },
 };

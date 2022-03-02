@@ -67,7 +67,7 @@ export default {
           population: p.population,
         };
       } else {
-        return { name: "Unknown" };
+        return { name: "Loading" };
       }
     },
     formatOutput(key, text) {
@@ -112,12 +112,23 @@ export default {
                 class="button"
                 v-if="
                   key === 'homeworld' &&
-                  formatOutput(key, entry[key]).name != 'unknown'
+                  formatOutput(key, entry[key]).name != 'unknown' &&
+                  formatOutput(key, entry[key]).name != 'Loading'
                 "
                 @click="$emit('togglePopup', formatOutput(key, entry[key]))"
               >
                 {{ formatOutput(key, entry[key]).name }}
               </button>
+
+              <p
+                v-else-if="
+                  key === 'homeworld' &&
+                  formatOutput(key, entry[key]).name === 'Loading'
+                "
+              >
+                {{ capitalFirstLetter(formatOutput(key, entry[key]).name) }}
+              </p>
+
               <p
                 v-else-if="
                   key === 'homeworld' &&
@@ -150,5 +161,5 @@ export default {
 </template>
 
 <style>
-@import './style.css';
+@import "./style.css";
 </style>
