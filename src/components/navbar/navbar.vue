@@ -27,6 +27,14 @@
         ><img alt="GitHub" src="../../assets/github_logo.png" width="30"
       /></a>
     </div>
+    <div class="icon">
+      <a
+        href="https://github.com/joeaoregan/vue-front-end-dev-app"
+        :target="newTab"
+        title="Repo"
+        ><img alt="GitHub" src="../../assets/repo.png" width="30"
+      /></a>
+    </div>
   </div>
 </template>
 
