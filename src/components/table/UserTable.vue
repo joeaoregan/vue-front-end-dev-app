@@ -1,55 +1,53 @@
-<script>
-import { ref } from "vue";
+<script setup>
+import { ref, computed } from "vue";
 
+const props = defineProps({
+  planets: Array,
+  users: Array,
+  columns: Array,
+  filterKey: String,
+});
+const sortKey = ref("");
+const sortOrders = ref(props.columns.reduce((o, key) => ((o[key] = 1), o), {}));
+
+const filteredData = computed(() => {
+  let { users, filterKey } = props;
+  if (filterKey) {
+    filterKey = filterKey.toLowerCase();
+    users = users.filter((row) => {
+      return Object.keys(row).some((key) => {
+        return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+      });
+    });
+  }
+  const key = sortKey.value;
+  if (key) {
+    const order = sortOrders.value[key];
+    users = users.slice().sort((a, b) => {
+      a = a[key];
+      b = b[key];
+      return (a === b ? 0 : a > b ? 1 : -1) * order;
+    });
+  }
+  return users;
+});
+
+function sortBy(key) {
+  sortKey.value = key;
+  sortOrders.value[key] *= -1;
+}
+</script>
+
+<script>
 export default {
   name: "UserTable",
   props: {
-    planets: Array,
-    users: Array,
-    columns: Array,
-    filterKey: String,
     ready: Boolean,
-  },
-  setup(props) {
-    const sortOrders = ref(
-      props.columns.reduce((o, key) => ((o[key] = 1), o), {})
-    );
-    const sortKey = ref("");
-
-    return {
-      sortOrders,
-      sortKey,
-    };
   },
   data() {
     return {
       planetDetails: "These are not the users you are looking for",
     };
-  },
-  computed: {
-    filteredData() {
-      let data = this.users;
-      let filterKey = this.filterKey;
-
-      if (filterKey) {
-        filterKey = filterKey.toLowerCase();
-        data = data.filter((row) => {
-          return Object.keys(row).some((key) => {
-            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
-          });
-        });
-      }
-      const key = this.sortKey.value;
-      if (key) {
-        const order = this.sortOrders.value[key];
-        data = data.slice().sort((a, b) => {
-          a = a[key];
-          b = b[key];
-          return (a === b ? 0 : a > b ? 1 : -1) * order;
-        });
-      }
-      return data;
-    },
   },
   methods: {
     capitalFirstLetter(str) {
@@ -84,9 +82,6 @@ export default {
       } else {
         return text;
       }
-    },
-    sortBy(key) {
-      this.sortOrders.value[key] *= -1;
     },
   },
 };
