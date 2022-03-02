@@ -6,6 +6,7 @@ const props = defineProps({
   users: Array,
   columns: Array,
   filterKey: String,
+  ready: Boolean,
 });
 const sortKey = ref("");
 const sortOrders = ref(props.columns.reduce((o, key) => ((o[key] = 1), o), {}));
@@ -41,9 +42,7 @@ function sortBy(key) {
 <script>
 export default {
   name: "UserTable",
-  props: {
-    ready: Boolean,
-  },
+  props: {},
   data() {
     return {
       planetDetails: "These are not the users you are looking for",
@@ -89,6 +88,8 @@ export default {
 
 <template>
   <div>
+    <!-- <div v-if="ready">ready true</div>
+    <div v-else>ready false</div> -->
     <div v-if="filteredData">
       <table v-if="filteredData.length" class="center">
         <thead>
@@ -98,7 +99,11 @@ export default {
               @click="sortBy(key)"
               :class="{ active: sortKey == key }"
               :key="key"
-              :title="'Sort By ' + capitalFirstLetter(key) + (sortOrders[key] > 0 ? ' Descending' : ' Ascending')"
+              :title="
+                'Sort By ' +
+                capitalFirstLetter(key) +
+                (sortOrders[key] > 0 ? ' Descending' : ' Ascending')
+              "
             >
               {{ capitalFirstLetter(key) }}
               <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
@@ -117,7 +122,9 @@ export default {
                   formatOutput(key, entry[key]).name != 'Loading'
                 "
                 @click="$emit('togglePopup', formatOutput(key, entry[key]))"
-                :title="'Click For ' + formatOutput(key, entry[key]).name + ' Info'"
+                :title="
+                  'Click For ' + formatOutput(key, entry[key]).name + ' Info'
+                "
               >
                 {{ formatOutput(key, entry[key]).name }}
               </button>

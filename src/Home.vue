@@ -107,7 +107,7 @@ export default {
       }
       console.log("All Users Loaded");
       if (nextPlanetPage == null && nextPersonPage == null) this.ready = true;
-      if (this.ready) console.log("Ready");
+      if (this.ready) console.log("Ready: " + this.ready);
     })();
 
     (async () => {
@@ -130,7 +130,7 @@ export default {
       }
       console.log("All Home Planets Loaded");
       if (nextPlanetPage == null && nextPersonPage == null) this.ready = true;
-      if (this.ready) console.log("Ready");
+      if (this.ready) console.log("Ready: " + this.ready);
     })();
   },
 };
