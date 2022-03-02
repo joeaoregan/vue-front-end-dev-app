@@ -116,6 +116,7 @@ export default {
                   formatOutput(key, entry[key]).name != 'Loading'
                 "
                 @click="$emit('togglePopup', formatOutput(key, entry[key]))"
+                :title="'Click For ' + formatOutput(key, entry[key]).name + ' Info'"
               >
                 {{ formatOutput(key, entry[key]).name }}
               </button>
