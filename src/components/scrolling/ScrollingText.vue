@@ -17,7 +17,7 @@
         </p>
         <p>
           The user can sort the table by each column by clicking on the column
-          heading. The user can filter by searching the person,s name. Entering
+          heading. The user can filter by searching the person's name. Entering
           the wrong name displays a Jedi Mind Trick gif.
         </p>
         <p>
