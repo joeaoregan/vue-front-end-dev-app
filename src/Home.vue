@@ -1,7 +1,5 @@
 <template>
   <div>
-    <NavBar></NavBar>
-
     <img :alt="imgAlt" src="./assets/logo.png" width="100" />
     <form v-show="people != null" id="search">
       Search <s>Your Feelings</s> Users:
@@ -37,7 +35,6 @@ const searchQuery = ref("");
 <script>
 import PlanetPopup from "./components/popup/Popup";
 import UserTable from "./components/table/UserTable.vue";
-import NavBar from "./components/navbar/navbar.vue";
 import axios from "axios";
 
 export default {
@@ -52,7 +49,6 @@ export default {
   },
   components: {
     UserTable,
-    NavBar,
   },
   methods: {
     testFunc(n) {

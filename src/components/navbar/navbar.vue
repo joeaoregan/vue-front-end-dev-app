@@ -1,14 +1,14 @@
 <template>
   <div class="navbar">
     <div class="icon">
-      <a href="./" title="Home" class="link"
-        ><img alt="home" src="../../assets/logo2.png" width="30"
-      /></a>
+      <router-link to="/">
+        <img alt="home" src="../../assets/logo2.png" width="30" />
+      </router-link>
     </div>
     <div class="icon">
-      <a href="#/about" title="About" class="link"
-        ><img alt="about" src="../../assets/info.png" width="30"
-      /></a>
+      <router-link to="/about">
+        <img alt="about" src="../../assets/info.png" width="30" />
+      </router-link>
     </div>
     <div class="icon">
       <a
