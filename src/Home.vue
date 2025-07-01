@@ -76,7 +76,7 @@ export default {
     };
   },
   mounted() {
-    document.title = "Joe O'Regan App";
+    document.title = "Joe O'Regan SWAPI App";
 
     let personPage = 1,
       planetPage = 1,
@@ -87,7 +87,7 @@ export default {
       while (nextPersonPage != null) {
         await axios
           .get(
-            "https://swapi.dev/api/people/?page=" + personPage + "&format=json"
+            "https://swapi.tech/api/people/?page=" + personPage + "&format=json"
           )
           .then((response) => {
             this.people = this.people.concat(response.data.results);
@@ -110,7 +110,7 @@ export default {
       while (nextPlanetPage != null) {
         await axios
           .get(
-            "https://swapi.dev/api/planets/?page=" + planetPage + "&format=json"
+            "https://swapi.tech/api/planets/?page=" + planetPage + "&format=json"
           )
           .then((response) => {
             this.planets = this.planets.concat(response.data.results);
