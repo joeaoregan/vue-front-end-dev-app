@@ -18,6 +18,9 @@
     "vue-axios": "^3.5.2",
     "vue-router": "^4.5.1"
   },
+  "engines": {
+    "node": ">= 18"
+  },
   "eslintConfig": {
     "root": true,
     "env": {
