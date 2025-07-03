@@ -79,8 +79,6 @@ export default {
     document.title = "Joe O'Regan SWAPI App";
 
     let personPage = 1,
-      planetPage = 1,
-      nextPlanetPage = "",
       nextPersonPage = "";
 
     (async () => {
@@ -106,11 +104,16 @@ export default {
       if (this.ready) console.log("Ready: " + this.ready);
     })();
 
+    let planetPage = 1,
+      nextPlanetPage = "";
+
     (async () => {
       while (nextPlanetPage != null) {
         await axios
           .get(
-            "https://swapi.tech/api/planets/?page=" + planetPage + "&format=json"
+            "https://swapi.tech/api/planets/?page=" +
+              planetPage +
+              "&format=json"
           )
           .then((response) => {
             this.planets = this.planets.concat(response.data.results);

@@ -70,13 +70,14 @@ export default {
       }
     },
     formatOutput(key, text) {
-      if (key === "created" || key == "edited") {
-        var date = new Date(text);
-        return new Intl.DateTimeFormat("en-IE", {
-          dateStyle: "short",
-          timeStyle: "medium",
-        }).format(date);
-      } else if (key === "homeworld") {
+      // if (key === "created" || key == "edited") {
+      //   var date = new Date(text);
+      //   return new Intl.DateTimeFormat("en-IE", {
+      //     dateStyle: "short",
+      //     timeStyle: "medium",
+      //   }).format(date);
+      // } else
+      if (key === "homeworld") {
         return this.getPlanetName(text);
       } else {
         return text;
